@@ -18,9 +18,69 @@ public class KeywordsDetector {
         detectAndPrint(sentences, keywords);
     }
 
+    //converts the string to lower case
+    public static String lowerCase(String str) {
+        String finalString = "";
+        for (int i = 0 ; i < str.length() ; i++){
+            if (str.charAt(i) <= 90 && str.charAt(i) >= 65){
+                finalString = finalString + (char)(str.charAt(i) + 32);
+            } else {
+                finalString = finalString + str.charAt(i);
+            }
+        }
+        return finalString;
+    }
+
+    //checks if 2 string are equal
+    public static boolean equalsStrings(String str1, String str2){
+        if (str1.length() != str2.length()){
+            return false;
+        }
+        for (int i = 0 ; i < str1.length() ; i++){
+            if (str1.charAt(i) != str2.charAt(i)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //checks if str1 contains str2
+    public static boolean contains(String str1, String str2) {
+        if (str1.length() < str2.length()){
+            return false;
+        }
+
+        if (str1.length() == str2.length()){
+            if (str1 == str2){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        for (int i = 0 ; i <= str1.length() - str2.length() ; i++){
+            String stringTemp = "";
+            for (int j = 0 ; j < str2.length() ; j++){
+                stringTemp = stringTemp + str1.charAt(j + i);
+            }
+
+            //checks if the strings are similar
+            if (equalsStrings(stringTemp, str2)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
+        for (int i = 0 ; i < sentences.length ; i++){
+            for (int j = 0 ; j < keywords.length ; j++){
+                if (contains(lowerCase(sentences[i]), lowerCase(keywords[j]))){
+                    System.out.println(sentences[i]);
+                }
+            } 
+        }
     }
 }

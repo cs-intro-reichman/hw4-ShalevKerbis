@@ -12,6 +12,7 @@ public class Primes {
         for (int x = 2 ; x <= input ; x++){
             isPrime[x] = true;
         }
+
         while (j * j <= input){
             if (isPrime[j]){
                 int i = j * j;
@@ -22,7 +23,8 @@ public class Primes {
             }
             j++;
         }
-
+        
+        //prints the numbers and count them
         for (int i = 0 ; i <= input ; i++){
             if (isPrime[i] == true){
                 System.out.println(i);

@@ -29,22 +29,13 @@ public class MyString {
         return finalString;
     }
 
-    //converting a string to an array
-    public static char[]stringToArray(String str){
-        char[] arr = new char[str.length()];
-        for (int i = 0 ; i < str.length() ; i++){
-            arr[i] = str.charAt(i);
-        }
-        return arr;
-    }
-
-    //checks if 2 char arrays are similar
-    public static boolean equalsArray(char[] arr1, char[] arr2){
-        if (arr1.length != arr2.length){
+    //checks if 2 strings are similar
+    public static boolean equalsStrings(String str1, String str2){
+        if (str1.length() != str2.length()){
             return false;
         }
-        for (int i = 0 ; i < arr1.length ; i++){
-            if (arr1[i] != arr2[i]){
+        for (int i = 0 ; i < str1.length() ; i++){
+            if (str1.charAt(i) != str2.charAt(i)){
                 return false;
             }
         }
@@ -70,12 +61,9 @@ public class MyString {
             for (int j = 0 ; j < str2.length() ; j++){
                 stringTemp = stringTemp + str1.charAt(j + i);
             }
-            //converting the string to an array
-            char[] arr1 = stringToArray(stringTemp);
-            char[] arr2 = stringToArray(str2);
 
-            //checks if the arrays are similar
-            if (equalsArray(arr1, arr2)){
+            //checks if the strings are similar
+            if (equalsStrings(stringTemp, str2)){
                 return true;
             }
         }
